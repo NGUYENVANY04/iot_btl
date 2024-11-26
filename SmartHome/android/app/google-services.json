@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "841188167845",
+    "project_id": "iot-btl-1e68d",
+    "storage_bucket": "iot-btl-1e68d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841188167845:android:9a0da533e53c2dea08fd4c",
+        "android_client_info": {
+          "package_name": "com.btl.iot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-a3lfzS2qelIeBCkS3IJjumHVwK5L8XU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
