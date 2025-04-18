@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:iot_btl/screens/auth/login_screens.dart';
 import 'package:iot_btl/screens/components/smart_device_box.dart';
 import 'package:iot_btl/screens/rfid_page.dart';
 import 'package:local_auth/local_auth.dart';
@@ -110,13 +112,13 @@ class _HomePageState extends State<HomePage> {
       });
     }
     _database.child('door').onValue.listen((event) {
-        final data = event.snapshot.value;
-        if (data != null) {
-          setState(() {
-           isOpenedDoor = data == true;
-          });
-        }
-      });
+      final data = event.snapshot.value;
+      if (data != null) {
+        setState(() {
+          isOpenedDoor = data == true;
+        });
+      }
+    });
   }
 
   // power button switched
@@ -194,10 +196,20 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // menu icon
-                    Image.asset(
-                      'assets/menu.png',
-                      height: 45,
-                      color: Colors.grey[800],
+                    IconButton(
+                      icon: Icon(
+                        Icons.logout,
+                        color: Colors.grey[800],
+                      ),
+                      onPressed: () {
+                        // Logout logic here
+                        FirebaseAuth.instance.signOut();
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                        );
+                      },
                     ),
 
                     // account icon
@@ -382,9 +394,7 @@ class _HomePageState extends State<HomePage> {
                               setState(() {
                                 isOpenedDoor = value;
                               });
-                              _database
-                                  .child('door')
-                                  .set(value);
+                              _database.child('door').set(value);
                             }
                             // powerSwitchChanged(value, index);
                           },

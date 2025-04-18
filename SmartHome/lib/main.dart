@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:iot_btl/firebase_options.dart';
 import 'package:iot_btl/noti_overlay.dart';
-import 'package:iot_btl/screens/home_page.dart';
+import 'package:iot_btl/screens/auth/login_screens.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginScreen(),
     );
   }
 }
